@@ -1,0 +1,29 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-apkpraktikal);
+  font-weight: 700;
+  border-radius: var(--radius-badges);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.icon {
+  font-style: normal;
+  line-height: 1;
+}
+
+/* Sizes */
+.sm  { font-size: 11px; padding: 4px 10px; }
+.md  { font-size: 12px; padding: 6px 14px; }
+.lg  { font-size: 13px; padding: 8px 18px; }
+
+/* Verdict colors — Design.md specification */
+.verified      { background: #2b9a66; color: #ffffff; }
+.false_verdict { background: #ea2804; color: #ffffff; }
+.misleading    { background: var(--color-mist); color: #d97706; border: 1px solid var(--color-ash); }
+.outOfContext  { background: var(--color-mist); color: #854d0e; border: 1px solid var(--color-ash); }
+.manipulated   { background: var(--color-carbon-ink); color: #ffffff; }
+.unverified    { background: var(--color-mist); color: var(--color-iron); border: 1px solid var(--color-ash); }

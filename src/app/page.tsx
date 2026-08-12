@@ -1,69 +1,180 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import styles from './page.module.css';
 
 export default function Home() {
+  const router = useRouter();
+  const [email, setEmail] = useState('');
+
+  const handleStart = (e: React.FormEvent) => {
+    e.preventDefault();
+    router.push('/verify');
+  };
+
   return (
-    <div className={styles.page}>
+    <>
+      <Navbar />
+
       <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+        {/* ─── Hero Section ──────────────────────── */}
+        <section className={styles.heroSection}>
+          <div className={styles.heroGradientAtmosphere}></div>
+          <div className={`container ${styles.heroContainer}`}>
+            <h1 className="hero-headline" style={{ marginBottom: 24, maxWidth: 900, textAlign: 'center' }}>
+              See beyond the feed.<br />
+              Know what&apos;s real.
+            </h1>
+            <p className={styles.heroSubtitle}>
+              Lucent is a modern verification console. Cross-examine claims, inspect multimodal forensics, and query Tier-1 primary sources instantly.
+            </p>
+            
+            <form className="email-capture-row" onSubmit={handleStart}>
+              <input 
+                type="email" 
+                className="input-field" 
+                placeholder="Enter your work email" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <button type="submit" className="btn btn--primary">
+                Get started
+              </button>
+            </form>
+          </div>
+
+          {/* Hero Video Container */}
+          <div className={`container ${styles.videoContainerWrapper}`}>
+            <div className={styles.heroVideoContainer}>
+              <div className={styles.playButton}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── Logo Grid Section ──────────────────────── */}
+        <section className={`section ${styles.logoSection}`}>
+          <div className={`container ${styles.logoGrid}`}>
+            <div className="card-logo-grid">
+              <span className={styles.socialLogo}>REUTERS VERIFY</span>
+              <span className={styles.migrationCaption}>Migrated off legacy tools</span>
+            </div>
+            <div className="card-logo-grid">
+              <span className={styles.socialLogo}>ASSOCIATED PRESS</span>
+              <span className={styles.migrationCaption}>Migrated off legacy tools</span>
+            </div>
+            <div className="card-logo-grid">
+              <span className={styles.socialLogo}>BBC VERIFY</span>
+              <span className={styles.migrationCaption}>Migrated off legacy tools</span>
+            </div>
+            <div className="card-logo-grid">
+              <span className={styles.socialLogo}>POYNTER</span>
+              <span className={styles.migrationCaption}>Migrated off legacy tools</span>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── Pastel Category Cards (Taxonomy) ──────────────────────── */}
+        <section className={`section section--cream`}>
+          <div className="container">
+            <h2 className="section-headline" style={{ textAlign: 'center', marginBottom: 80 }}>
+              The complete verification stack
+            </h2>
+            
+            <div className={styles.pastelGrid}>
+              <div className="card-pastel card-pastel--pink">
+                <h3 className={styles.pastelTitle}>Intelligence</h3>
+                <p className={styles.pastelBody}>Converts viral videos, audio tracks, and social posts into atomic factual claims using Gemini 3.6 Flash.</p>
+              </div>
+              
+              <div className="card-pastel card-pastel--green">
+                <h3 className={styles.pastelTitle}>Lead Gen</h3>
+                <p className={styles.pastelBody}>Cross-examines claims against Tavily search index, academic archives, and Tier-1 primary news sources.</p>
+              </div>
+              
+              <div className="card-pastel card-pastel--yellow">
+                <h3 className={styles.pastelTitle}>Engagement</h3>
+                <p className={styles.pastelBody}>Analyzes frame authenticity, EXIF metadata, and visual manipulation with Sightengine and Hive APIs.</p>
+              </div>
+              
+              <div className="card-pastel card-pastel--violet">
+                <h3 className={styles.pastelTitle}>Deliver</h3>
+                <p className={styles.pastelBody}>Grounded conversational assistant providing structured 3-part breakdowns of any investigation.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── Light Feature Cards ──────────────────────── */}
+        <section className={`section`}>
+          <div className="container">
+            <div className={styles.lightFeatureGrid}>
+              <div className="card-light">
+                <h3 className={styles.lightFeatureTitle}>99.9% Uptime</h3>
+                <p className={styles.lightFeatureBody}>On primary evidence sources and databases. We ensure maximum reliability for your investigations.</p>
+              </div>
+              <div className="card-light">
+                <h3 className={styles.lightFeatureTitle}>5,000+ Teams</h3>
+                <p className={styles.lightFeatureBody}>Verification teams relying on Lucent infrastructure globally to combat misinformation.</p>
+              </div>
+              <div className="card-light">
+                <h3 className={styles.lightFeatureTitle}>&lt; 200ms Latency</h3>
+                <p className={styles.lightFeatureBody}>Real-time processing for multimodal forensics and metadata extraction.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── Dark Testimonial Section ──────────────────────── */}
+        <section className={`section section--dark`}>
+          <div className="container">
+            <h2 className="section-headline-dark" style={{ textAlign: 'center', marginBottom: 80 }}>
+              Loved by verification teams
+            </h2>
+            
+            <div className={styles.testimonialGrid}>
+              <div className="card-dark-testimonial">
+                <p className={styles.testimonialQuote}>"Lucent transformed how quickly we can verify breaking news videos on social media."</p>
+                <div className={styles.testimonialAuthor}>
+                  <div className={styles.avatar}></div>
+                  <div>
+                    <div className={styles.authorName}>Sarah Jenkins</div>
+                    <div className={styles.authorRole}>Lead Investigator</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="card-dark-testimonial">
+                <p className={styles.testimonialQuote}>"The multimodal forensics alone replaced three different tools in our daily workflow."</p>
+                <div className={styles.testimonialAuthor}>
+                  <div className={styles.avatar}></div>
+                  <div>
+                    <div className={styles.authorName}>David Chen</div>
+                    <div className={styles.authorRole}>OSINT Analyst</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="card-dark-testimonial">
+                <p className={styles.testimonialQuote}>"Unparalleled accuracy in matching claims with primary sources. It's a game changer."</p>
+                <div className={styles.testimonialAuthor}>
+                  <div className={styles.avatar}></div>
+                  <div>
+                    <div className={styles.authorName}>Elena Rodriguez</div>
+                    <div className={styles.authorRole}>Fact-Checker</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
       </main>
-    </div>
+
+      <Footer />
+    </>
   );
 }

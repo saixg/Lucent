@@ -1,0 +1,83 @@
+/* ─── Sticky Top Navigation Bar ────────────────────────────────────────── */
+.navHeader {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 72px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.navHeader.scrolled {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+}
+
+.inner {
+  max-width: var(--page-max-width);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--spacing-24);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-24);
+}
+
+/* Logo */
+.logoSquare {
+  width: 16px;
+  height: 16px;
+  background: var(--color-phoenix-orange);
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* Center Section */
+.centerSection {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-32);
+  flex: 1;
+  justify-content: center;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-36);
+}
+
+.link {
+  font-family: var(--font-labil-grotesk-variable);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-ink);
+  transition: opacity 0.15s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.link:hover {
+  opacity: 0.6;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+  .links {
+    display: none;
+  }
+}

@@ -1,0 +1,477 @@
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes blink {
+  0%, 80%, 100% { opacity: 0; }
+  40% { opacity: 1; }
+}
+
+.thinkingDots span {
+  animation: blink 1.4s infinite both;
+}
+.thinkingDots span:nth-child(2) { animation-delay: 0.2s; }
+.thinkingDots span:nth-child(3) { animation-delay: 0.4s; }
+
+.main {
+  min-height: 100vh;
+  padding-top: 40px;
+  background: var(--color-console-charcoal);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 24px;
+  align-items: start;
+  padding-bottom: 80px;
+}
+
+/* ─── LEFT: Report ──────────────────────────────────────────────────────── */
+.report {
+  background: var(--color-recess-black);
+  border: 1px solid var(--color-wire-gray);
+  border-radius: var(--radius-xl);
+  padding: var(--card-padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-32);
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-geistmono);
+  font-size: 12px;
+}
+
+.breadcrumbLink {
+  color: var(--color-mute-gray);
+  text-decoration: none;
+}
+.breadcrumbLink:hover { color: var(--color-bone-white); text-decoration: underline; }
+
+.breadcrumbSep { color: var(--color-wire-gray); }
+
+.breadcrumbId {
+  color: var(--color-bone-white);
+}
+
+.verdictHeader {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.confidence {
+  font-family: var(--font-geistmono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-mute-gray);
+}
+
+.claimText {
+  font-family: var(--font-geistsans);
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--color-bone-white);
+  line-height: 1.3;
+  letter-spacing: -0.5px;
+}
+
+.contentSource {
+  font-family: var(--font-geistmono);
+  font-size: 12px;
+  color: var(--color-smoke);
+}
+
+.summaryBox {
+  background: var(--color-console-charcoal);
+  border: 1px solid var(--color-wire-gray);
+  border-left: 3px solid var(--color-aurora-spectrum);
+  padding: 16px 20px;
+  border-radius: 4px;
+}
+
+.summaryText {
+  font-family: var(--font-geistsans);
+  font-size: 15px;
+  color: var(--color-bone-white);
+  line-height: 1.5;
+}
+
+/* ─── Section ───────────────────────────────────────────────────────────── */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionTitle {
+  font-family: var(--font-geistmono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+  color: var(--color-mute-gray);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-wire-gray);
+}
+
+/* ─── Scores ────────────────────────────────────────────────────────────── */
+.scores { display: flex; flex-direction: column; gap: 14px; }
+
+.scoreRow { display: flex; flex-direction: column; gap: 6px; }
+
+.scoreMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.scoreLabel {
+  font-family: var(--font-geistsans);
+  font-size: 14px;
+  color: var(--color-mute-gray);
+}
+
+.scoreValue {
+  font-family: var(--font-geistmono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-bone-white);
+}
+
+.scoreTrack {
+  height: 4px;
+  background: var(--color-console-charcoal);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.scoreFill {
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+/* ─── Claims ────────────────────────────────────────────────────────────── */
+.claimsGrid { display: flex; flex-direction: column; gap: 8px; }
+
+.claimItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--color-console-charcoal);
+  border: 1px solid var(--color-wire-gray);
+  border-radius: 8px;
+}
+
+.claimItemText {
+  font-family: var(--font-geistsans);
+  font-size: 14px;
+  color: var(--color-bone-white);
+}
+
+/* ─── Media Forensics ───────────────────────────────────────────────────── */
+.forensicsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.forensicsCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 8px;
+  background: var(--color-console-charcoal);
+  border: 1px solid var(--color-wire-gray);
+  border-radius: 8px;
+}
+
+.forensicsGauge {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.forensicsVal {
+  position: absolute;
+  font-family: var(--font-geistmono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-bone-white);
+}
+
+.forensicsLabel {
+  font-family: var(--font-geistsans);
+  font-size: 12px;
+  color: var(--color-mute-gray);
+  text-align: center;
+}
+
+/* ─── Evidence ──────────────────────────────────────────────────────────── */
+.evidenceList { display: flex; flex-direction: column; gap: 12px; }
+
+.evidenceItem {
+  border: 1px solid var(--color-wire-gray);
+  background: var(--color-console-charcoal);
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.15s ease;
+}
+.evidenceItem:hover { border-color: var(--color-bone-white); }
+
+.evidenceHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tierBadge {
+  background: var(--color-recess-black);
+  color: var(--color-bone-white);
+  border: 1px solid var(--color-wire-gray);
+  border-radius: var(--radius-tags);
+  padding: 2px 8px;
+  font-family: var(--font-geistmono);
+  font-size: 11px;
+}
+
+.evidenceSource {
+  font-family: var(--font-geistsans);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-bone-white);
+  flex: 1;
+}
+
+.evidenceStance {
+  font-family: var(--font-geistmono);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.credScore {
+  font-family: var(--font-geistmono);
+  font-size: 11px;
+  color: var(--color-mute-gray);
+}
+
+.evidenceSnippet {
+  font-family: var(--font-geistsans);
+  font-size: 14px;
+  color: var(--color-mute-gray);
+  line-height: 1.45;
+}
+
+/* ─── Share ─────────────────────────────────────────────────────────────── */
+.shareRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-wire-gray);
+  flex-wrap: wrap;
+}
+
+.shareLabel {
+  font-family: var(--font-geistsans);
+  font-size: 14px;
+  color: var(--color-mute-gray);
+}
+
+.shareBtn {
+  font-family: var(--font-geistmono);
+  font-size: 12px;
+  color: var(--color-bone-white);
+  background: var(--color-console-charcoal);
+  border: 1px solid var(--color-wire-gray);
+  border-radius: var(--radius-buttons);
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.shareBtn:hover { border-color: var(--color-bone-white); }
+
+/* ─── RIGHT: Chat Panel ─────────────────────────────────────────────────── */
+.chatPanel {
+  background: var(--color-recess-black);
+  border: 1px solid var(--color-wire-gray);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 140px);
+  position: sticky;
+  top: 88px;
+  overflow: hidden;
+}
+
+.chatHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-wire-gray);
+  flex-shrink: 0;
+  background: var(--color-nav-ink);
+}
+
+.chatLogo {
+  width: 28px;
+  height: 28px;
+  background: var(--color-bone-white);
+  color: var(--color-nav-ink);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.chatTitle {
+  font-family: var(--font-geistsans);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-bone-white);
+}
+
+.chatSubtitle {
+  font-family: var(--font-geistmono);
+  font-size: 11px;
+  color: var(--color-mute-gray);
+}
+
+.chatMessages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chatMsg {
+  font-family: var(--font-geistsans);
+  font-size: 14px;
+  line-height: 1.45;
+  padding: 10px 14px;
+  border-radius: 8px;
+  max-width: 92%;
+}
+
+.chatUser {
+  background: var(--color-bone-white);
+  color: var(--color-nav-ink);
+  align-self: flex-end;
+  border-radius: var(--radius-buttons);
+}
+
+.chatAi {
+  background: var(--color-console-charcoal);
+  border: 1px solid var(--color-wire-gray);
+  color: var(--color-bone-white);
+  align-self: flex-start;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.chatAiDot {
+  color: var(--color-aurora-spectrum);
+  font-size: 12px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.quickPrompts {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--color-wire-gray);
+  flex-shrink: 0;
+}
+
+.quickPrompt {
+  font-family: var(--font-geistsans);
+  font-size: 13px;
+  color: var(--color-mute-gray);
+  background: var(--color-console-charcoal);
+  border: 1px solid var(--color-wire-gray);
+  border-radius: var(--radius-pills);
+  padding: 6px 12px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+}
+.quickPrompt:hover {
+  background: var(--color-recess-black);
+  color: var(--color-bone-white);
+  border-color: var(--color-bone-white);
+}
+
+.chatInputWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--color-wire-gray);
+  flex-shrink: 0;
+}
+
+.chatInput {
+  flex: 1;
+  border: 1px solid var(--color-wire-gray);
+  border-radius: var(--radius-pills);
+  padding: 8px 14px;
+  font-family: var(--font-geistsans);
+  font-size: 14px;
+  color: var(--color-bone-white);
+  outline: none;
+  background: var(--color-console-charcoal);
+}
+
+.chatInput:focus {
+  border-color: var(--color-bone-white);
+}
+
+.chatSend {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-pills);
+  background: var(--color-bone-white);
+  color: var(--color-nav-ink);
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.15s ease;
+}
+.chatSend:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .chatPanel {
+    position: static;
+    height: 540px;
+  }
+  .forensicsGrid { grid-template-columns: repeat(2, 1fr); }
+}

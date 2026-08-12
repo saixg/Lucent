@@ -1,41 +1,53 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
+  const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
-      <div className={styles.inner}>
-        {/* Logo */}
-        <Link href="/" className={styles.logo} id="nav-logo">
-          <span className={styles.logoIcon} aria-hidden>✦</span>
-          <span className={styles.logoText}>VeriLens</span>
-        </Link>
-
-        {/* Center links */}
-        <div className={styles.links}>
-          <Link href="#how-it-works" className={styles.link}>How it works</Link>
-          <Link href="#features" className={styles.link}>Features</Link>
-          <Link href="#verdicts" className={styles.link}>Verdicts</Link>
-          <Link href="/verify" className={styles.link}>Demo</Link>
-        </div>
-
-        {/* Right CTA */}
-        <div className={styles.actions}>
-          <Link href="/verify" className={`btn btn--primary btn--compact ${styles.cta}`} id="nav-cta">
-            Try VeriLens
+    <>
+      <header className={`${styles.navHeader} ${scrolled ? styles.scrolled : ''}`}>
+        <div className={styles.inner}>
+          {/* Left: Logo mark (White Pill Badge style) */}
+          <Link href="/" className="badge-white" style={{ textDecoration: 'none' }}>
+            <span className={styles.logoSquare} aria-hidden />
+            <span>LUCENT</span>
           </Link>
+
+          {/* Center: Search & Nav Links */}
+          <div className={styles.centerSection}>
+            <nav className={styles.links}>
+              <Link href="/#product" className={styles.link}>Product</Link>
+              <Link href="/#why-us" className={styles.link}>Why us</Link>
+              <Link href="/#resources" className={styles.link}>Resources</Link>
+              <Link href="/#customers" className={styles.link}>Customers</Link>
+              <Link href="/#pricing" className={styles.link}>Pricing</Link>
+            </nav>
+          </div>
+
+          {/* Right: Dual-action cluster (ghost + filled) */}
+          <div className={styles.actions}>
+            <Link href="/verify" className="btn btn--ghost">
+              Open app
+            </Link>
+            <Link href="/verify" className="btn btn--primary">
+              Get started
+            </Link>
+          </div>
         </div>
-      </div>
-    </nav>
+      </header>
+    </>
   );
 }
