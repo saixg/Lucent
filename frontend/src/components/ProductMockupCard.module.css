@@ -1,0 +1,60 @@
+.wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+.orb {
+  display: none;
+}
+
+/* The card — sharp 0px radius, hairline border */
+.card {
+  position: relative;
+  z-index: 1;
+  background: var(--color-bone-white);
+  border-radius: var(--radius-cards);
+  border: 1px solid var(--color-smoke);
+  overflow: hidden;
+  min-width: 280px;
+}
+
+/* Traffic light dots */
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 12px 0;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  display: block;
+}
+
+.dotRed   { background: var(--color-silver); }
+.dotAmber { background: var(--color-silver); }
+.dotGreen { background: var(--color-silver); }
+
+/* Title bar */
+.titleBar {
+  padding: 6px 12px 8px;
+  border-bottom: 1px solid var(--color-fog);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portalLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
+.content {
+  padding: var(--spacing-16);
+}

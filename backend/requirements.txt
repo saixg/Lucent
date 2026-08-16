@@ -1,0 +1,48 @@
+# Core
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pydantic==2.8.2
+pydantic-settings==2.4.0
+python-dotenv==1.0.1
+
+# Database
+supabase==2.7.4
+asyncpg==0.29.0
+sqlalchemy==2.0.35
+alembic==1.13.3
+
+# AI / LLM
+google-genai>=1.0.0
+openai==1.51.0
+anthropic==0.34.2
+
+# Media processing
+yt-dlp==2024.10.7
+Pillow==10.4.0
+opencv-python-headless==4.10.0.84
+ffmpeg-python==0.2.0
+pytesseract==0.3.13
+whisper==1.1.10
+
+# Web / Search
+httpx==0.27.2
+beautifulsoup4==4.12.3
+lxml==5.3.0
+trafilatura==1.12.0
+duckduckgo-search==6.3.0
+newspaper3k==0.2.8
+
+# Background jobs
+celery==5.4.0
+redis==5.0.8
+
+# Auth & Security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.9
+slowapi==0.1.9
+
+# Utils
+structlog==24.4.0
+sentry-sdk[fastapi]==2.14.0
+boto3==1.35.28

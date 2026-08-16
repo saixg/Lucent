@@ -1,0 +1,427 @@
+:root {
+  /* Colors */
+  --color-signal-white: #ffffff;
+  --color-ink-black: #202020;
+  --color-onyx: #090c1d;
+  --color-carbon: #2a2a2a;
+  --color-slate: #646464;
+  --color-ash: #838383;
+  --color-fog: #b3b3b3;
+  --color-cloud: #d4d4d4;
+  --color-bone: #e8e8e8;
+  --color-mist: #f8f9fa;
+  --color-plaster: #e9ebf0;
+  --color-mercury: #eeeeee;
+  --color-brand-violet: #6647f0;
+  --color-signal-blue: #0091ff;
+  --color-mint: #6ee7b7;
+  --color-emerald: #00c07a;
+  --color-teal-tag: #16c0a4;
+
+  /* Gradients */
+  --gradient-rainbow-conic: conic-gradient(
+    from 90deg,
+    rgb(125, 91, 231) 19%,
+    rgb(188, 63, 218) 28%,
+    rgb(250, 36, 206) 37%,
+    rgb(251, 73, 165) 45%,
+    rgb(252, 109, 123) 52%,
+    rgb(253, 132, 97) 55%,
+    rgb(253, 154, 70) 58%,
+    rgb(246, 135, 198) 65%,
+    rgb(163, 160, 224) 80%,
+    rgb(79, 185, 250) 95%,
+    rgb(0, 145, 255) 100%
+  );
+  --gradient-primary-gradient: linear-gradient(83deg, rgba(64,221,255) -5%, rgba(118,18,250) 51%, rgba(250,18,227) 125%);
+  --gradient-dark-fade: linear-gradient(rgb(17, 17, 17) 24%, rgb(0, 0, 0));
+
+  /* Typography Fonts */
+  --font-family-display: var(--font-plus-jakarta-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-body: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: var(--font-sometype-mono), ui-monospace, Menlo, Monaco, Consolas, monospace;
+
+  /* Typography Scale */
+  --text-body-sm: 14px;
+  --text-body: 16px;
+  --text-subheading: 20px;
+  --text-heading-sm: 34px;
+  --text-heading: 48px;
+  --text-heading-lg: 60px;
+  --text-display: 76px;
+
+  /* Spacing Scale (4px base) */
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-28: 28px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-48: 48px;
+  --spacing-56: 56px;
+  --spacing-72: 72px;
+  --spacing-80: 80px;
+
+  /* Layout */
+  --page-max-width: 1200px;
+  --section-gap: 80px;
+  --card-padding: 28px;
+  --element-gap: 12px;
+
+  /* Border Radii */
+  --radius-tags: 100px;
+  --radius-cards: 12px;
+  --radius-badges: 9999px;
+  --radius-images: 16px;
+  --radius-inputs: 9px;
+  --radius-buttons: 9999px;
+  --radius-largecards: 20px;
+
+  /* Shadows */
+  --shadow-subtle: rgba(0, 0, 0, 0.08) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px -1px;
+  --shadow-subtle-2: rgba(18, 43, 165, 0.04) 0px 1px 1px -0.5px, rgba(18, 43, 165, 0.04) 0px 3px 3px -1.5px;
+  --shadow-xl: rgba(0, 0, 0, 0.17) -34px -13px 37px 0px, rgba(0, 0, 0, 0.2) -9px -3px 20px 0px;
+  --shadow-sm: rgba(13, 21, 48, 0.04) 0px 4px 4px 0px;
+  --shadow-card-hover: rgba(0, 0, 0, 0.08) 0px 8px 24px -4px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--color-signal-white);
+  color: var(--color-ink-black);
+  font-family: var(--font-family-body);
+  font-size: var(--text-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ─── Typography Utility Classes ─────────────────────────────────────────────── */
+.font-display {
+  font-family: var(--font-family-display);
+}
+
+.font-mono {
+  font-family: var(--font-family-mono);
+}
+
+.display-headline {
+  font-family: var(--font-family-display);
+  font-size: clamp(42px, 6vw, var(--text-display));
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  color: var(--color-onyx);
+}
+
+.section-headline {
+  font-family: var(--font-family-display);
+  font-size: clamp(32px, 4vw, var(--text-heading));
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  color: var(--color-onyx);
+}
+
+.subheading {
+  font-size: var(--text-subheading);
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+  color: var(--color-slate);
+}
+
+.mono-meta {
+  font-family: var(--font-family-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ash);
+}
+
+/* ─── Layout Containers ──────────────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--page-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-24);
+  padding-right: var(--spacing-24);
+}
+
+.section {
+  padding-top: var(--section-gap);
+  padding-bottom: var(--section-gap);
+}
+
+.section-band {
+  background-color: var(--color-plaster);
+}
+
+.section-dark {
+  background: var(--gradient-dark-fade);
+  color: var(--color-signal-white);
+}
+
+/* ─── 9999px Pill Button Styles ─────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-8);
+  font-family: var(--font-family-display);
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: var(--radius-buttons);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  border: none;
+  outline: none;
+}
+
+.btn-primary {
+  background-color: var(--color-ink-black);
+  color: var(--color-signal-white);
+  padding: 12px 24px;
+}
+
+.btn-primary:hover {
+  background-color: #000000;
+  transform: translateY(-1px);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-ghost-outline {
+  background-color: transparent;
+  color: var(--color-carbon);
+  border: 1px solid var(--color-bone);
+  padding: 10px 20px;
+}
+
+.btn-ghost-outline:hover {
+  border-color: var(--color-fog);
+  background-color: var(--color-mist);
+}
+
+.btn-blue-outline {
+  background-color: transparent;
+  color: var(--color-signal-blue);
+  border: 1px solid var(--color-signal-blue);
+  padding: 10px 20px;
+}
+
+.btn-blue-outline:hover {
+  background-color: rgba(0, 145, 255, 0.05);
+}
+
+.btn-nav-pill {
+  background-color: transparent;
+  color: var(--color-carbon);
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.btn-nav-pill:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* ─── Animated Rainbow Conic Border Element ─────────────────────────────────── */
+.conic-border-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 2px;
+  border-radius: var(--radius-buttons);
+  overflow: hidden;
+  background: transparent;
+}
+
+.conic-border-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: var(--gradient-rainbow-conic);
+  animation: rotateConic 3s linear infinite;
+  z-index: 0;
+}
+
+.conic-border-inner {
+  position: relative;
+  z-index: 1;
+  background-color: var(--color-signal-white);
+  border-radius: var(--radius-buttons);
+  display: flex;
+  align-items: center;
+}
+
+@keyframes rotateConic {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ─── Tag & Status Pills ─────────────────────────────────────────────────────── */
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  font-family: var(--font-family-display);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: var(--radius-tags);
+  background-color: var(--color-mist);
+  color: var(--color-carbon);
+  border: 1px solid var(--color-bone);
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.tag-pill:hover {
+  border-color: var(--color-signal-blue);
+  color: var(--color-signal-blue);
+}
+
+.tag-pill-active {
+  background-color: #eff6ff;
+  border-color: var(--color-signal-blue);
+  color: var(--color-signal-blue);
+}
+
+/* Verdict Status Badges */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-family-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 4px 12px;
+  border-radius: var(--radius-badges);
+  text-transform: uppercase;
+}
+
+.status-true {
+  background-color: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.status-false {
+  background-color: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.status-misleading {
+  background-color: #fffbeb;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+
+.status-missing-context {
+  background-color: #eff6ff;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+}
+
+.status-altered {
+  background-color: #faf5ff;
+  color: #6b21a8;
+  border: 1px solid #e9d5ff;
+}
+
+.status-unverifiable {
+  background-color: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+/* ─── Card Utilities ─────────────────────────────────────────────────────────── */
+.card-flat {
+  background-color: var(--color-signal-white);
+  border: 1px solid var(--color-bone);
+  border-radius: var(--radius-cards);
+  padding: var(--card-padding);
+  box-shadow: var(--shadow-subtle);
+  transition: box-shadow 0.2s ease;
+}
+
+.card-flat:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.card-dark {
+  background-color: #141414;
+  border: 1px solid #2a2a2a;
+  border-radius: var(--radius-cards);
+  padding: var(--card-padding);
+  color: var(--color-signal-white);
+}
+
+/* ─── Form Inputs ────────────────────────────────────────────────────────────── */
+.input-text {
+  width: 100%;
+  font-family: var(--font-family-body);
+  font-size: 15px;
+  color: var(--color-ink-black);
+  background-color: var(--color-signal-white);
+  border: 1px solid var(--color-cloud);
+  border-radius: var(--radius-inputs);
+  padding: 12px 16px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.input-text:focus {
+  border-color: var(--color-signal-blue);
+  box-shadow: 0 0 0 3px rgba(0, 145, 255, 0.12);
+}
+
+/* ─── Checkmark Bullets ──────────────────────────────────────────────────────── */
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--color-slate);
+}
+
+.benefit-check {
+  color: var(--color-signal-blue);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.benefit-strong {
+  font-weight: 700;
+  color: var(--color-ink-black);
+}

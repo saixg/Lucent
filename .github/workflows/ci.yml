@@ -1,0 +1,55 @@
+name: Lucent CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  backend-tests:
+    name: Backend Test Suite
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: |
+          cd backend
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt pytest httpx anyio
+
+      - name: Run Backend Tests
+        env:
+          DATABASE_URL: sqlite+aiosqlite:///./test.db
+          APP_ENV: test
+          SECRET_KEY: ci-test-key
+        run: |
+          cd backend
+          python -m pytest tests/ -v
+
+  frontend-typecheck:
+    name: Frontend Typecheck & Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Typecheck
+        run: |
+          cd frontend
+          npx tsc --noEmit

@@ -1,0 +1,67 @@
+.card {
+  background: var(--color-bone-white);
+  border: 1px solid var(--color-smoke);
+  border-radius: var(--radius-cards);
+  padding: var(--spacing-16);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.15s ease;
+}
+
+.card:hover {
+  border-color: var(--color-ink);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-basier);
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-family: var(--font-basier);
+  font-size: var(--text-body-sm);
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.handle {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  color: var(--color-graphite);
+}
+
+.quote {
+  font-family: var(--font-basier);
+  font-size: var(--text-body-sm);
+  color: var(--color-ink);
+  line-height: var(--leading-body-sm);
+  flex: 1;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+  color: var(--color-sunset-gradient-ember);
+  font-size: 12px;
+}
